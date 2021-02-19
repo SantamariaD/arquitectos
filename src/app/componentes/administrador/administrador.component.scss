@@ -1,0 +1,30 @@
+.contenedor-administrador {
+    margin: 100px auto 50px auto;
+    max-width: 80%;
+}
+
+.btn-cambios {
+    max-width: 520px;
+    margin: auto;
+}
+
+.contenedor-servicios,
+.contenedor-home,
+.contenedor-generales {
+    -webkit-box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+}
+
+.img-guardada,
+.img-guardada img {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.subir-imagen {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    column-gap: 10px;
+}

@@ -1,0 +1,28 @@
+<h2 class="text-center contactos">¡Bienvenida Angélica! <br>Contactos registrados en la página</h2>
+<div *ngIf="status == 'correcto'" class="alert alert-success text-center" role="alert">
+    ¡El contacto fue borrado!
+</div>
+<div *ngIf="status == 'error'" class="alert alert-danger text-center" role="alert">
+    ¡El contacto no pudo ser borrado!
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Telefóno</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mensaje</th>
+            <th scope="col">Borrar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contacto of contactos;">
+            <td>{{contacto.nombre}}</td>
+            <td>{{contacto.telefono}}</td>
+            <td>{{contacto.email}}</td>
+            <td>{{contacto.mensaje}}</td>
+            <!--Botón para eliminar contacto, manda el id de cada comentario el cual se obtuvo de la base de datos con el servicio "traerContactos"-->
+            <td><i class="fas fa-trash-alt basura" (click)="mostrarAlerta(contacto.id)"></i></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,108 @@
+<!--INICIO CARRUSEL-->
+<mdb-carousel class="carousel slide mb-5 carousel-fade" [animation]="'fade'">
+    <mdb-carousel-item class="carousel-item">
+        <!--INICIO PARALLAX-->
+        <div class="imagen-carrusel">
+            <img src="{{url+'traer-imagen/'+cambios.imgcarr1}}" alt="">
+        </div>
+        <div class="texto-carrusel">
+            <h2 class="text-center">{{cambios.textimg1}}</h2>
+            <div class="borde-abajo"></div>
+        </div>
+
+        <!--FIN PARALLAX-->
+    </mdb-carousel-item>
+    <mdb-carousel-item class="carousel-item">
+        <!--INICIO PARALLAX-->
+        <div class="imagen-carrusel">
+            <img src="{{url+'traer-imagen/'+cambios.imgcarr2}}" alt="">
+        </div>
+        <div class="texto-carrusel">
+            <h2 class="text-center">{{cambios.textimg2}}</h2>
+            <div class="borde-abajo"></div>
+        </div>
+        <!--FIN PARALLAX-->
+    </mdb-carousel-item>
+    <mdb-carousel-item class="carousel-item">
+        <!--INICIO PARALLAX-->
+        <div class="imagen-carrusel">
+            <img src="{{url+'traer-imagen/'+cambios.imgcarr3}}" alt="">
+        </div>
+        <div class="texto-carrusel">
+            <h2 class="text-center">{{cambios.textimg3}}</h2>
+            <div class="borde-abajo"></div>
+        </div>
+        <!--FIN PARALLAX-->
+    </mdb-carousel-item>
+
+</mdb-carousel>
+<!--FIN CARRUSEL-->
+
+<!--INICIO TEXTO--->
+<section class="container-fluid mt-5">
+    <div class="texto-principal container">
+        <div>
+            <h2 [ngStyle]="{'color': cambios.colortext}" class="mayor">{{cambios.text1}} </h2>
+            <p class="menor">{{cambios.text2}}</p>
+        </div>
+        <div></div>
+    </div>
+    <div class="texto-secundario container">
+        <div class="secundario1">
+            <h2 [ngStyle]="{'color': cambios.colortext}" class="mayor">{{cambios.text3}} </h2>
+            <p class="menor">{{cambios.text4}}</p>
+        </div>
+        <div class="secundario2">
+            <p class="menor">{{cambios.text5}}</p>
+        </div>
+    </div>
+</section>
+
+
+
+<!--INICIO SECCION 2-->
+<div class="seccion-2 ">
+    <div class="franja">
+        <h3 [ngStyle]="{'color': cambios.colortext}" class="text-center clientess mayor">Nuestros clientes</h3>
+        <div class="clientes">
+            <div class="cliente">
+                <img src="/assets/img/manada.png" alt="ingenieria civil">
+            </div>
+            <div class="cliente">
+                <img src="/assets/img/mdahuar.png" alt="ingenieria civil">
+            </div>
+            <div class="cliente">
+                <img src="/assets/img/gpic.png" alt="ingenieria civil">
+            </div>
+            <div class="cliente">
+                <img src="/assets/img/2m.png" alt="ingenieria civil">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!--FIN SECCION 2-->
+
+<!--INICIO SECCION 3-->
+<div class="seccion-3">
+    <div class="img-seccion3">
+        <img src="assets/img/edificionconstru.jpg" alt="construccion de edificio">
+    </div>
+    <div class="text-seccion3">
+        <h3 [ngStyle]="{'color': cambios.colortext}" class="mayor">CONFIABILIDAD</h3>
+        <p class="menor">Trabajamos con y para nuestros clientes. Estamos comprometidos con cada parte del proceso para poder garantizar un servicio eficiente y de gran calidad.</p>
+    </div>
+</div>
+<!--FIN SECCION 3-->
+
+<!--MAPA-->
+<div class="contenedor-mapa">
+    <div class="text-map">
+        <h3 [ngStyle]="{'color': cambios.colortext}" class="menor1">Dirección</h3>
+        <p class="menor">Ahuejotes #39, Pueblo Nuevo Alto, Magdalena Contreras, C.P. 10640, CDMX.</p>
+    </div>
+    <div class="map mb-5" id="map"></div>
+</div>
+
+<!--FIN TEXTO-->

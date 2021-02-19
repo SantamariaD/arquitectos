@@ -1,0 +1,60 @@
+.contenedor-contactos {
+    margin-top: 110px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.contenedor-contactos video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.form-contacto {
+    max-width: 500px;
+    background-color: white;
+    padding: 20px 50px;
+    margin: 20px auto;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 55px;
+    opacity: .9;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.rojo {
+    color: red;
+}
+
+.btn,
+.boton {
+    width: 150px!important;
+    height: 60px;
+    margin: 10px auto!important;
+}
+
+.mensaje-correcto {
+    color: #00C851;
+}
+
+.mensaje-incorrecto {
+    color: #F93154;
+}
+
+@media(max-width:420px) {
+    .form-contacto {
+        max-width: 270px;
+        margin-bottom: 130px;
+    }
+}

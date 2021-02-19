@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+//font-family: 'DM Sans', sans-serif;
+//font-family: 'Staatliches', cursive;
+//font-family: 'Fjalla One', sans-serif;
+html {
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+body {
+    font-family: 'Fjalla One', sans-serif!important;
+}

@@ -1,0 +1,44 @@
+<!--Navbar-->
+
+<nav [ngStyle]="{'background': cambios.colornav}" class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar colornav">
+    <a class="navbar-brand" [routerLink]="['/central']"><img src="/assets/img/logo.png" alt=""></a>
+    <button class="navbar-toggler btn-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon btn-light"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/central']">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/servicios']">Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/proyectos']">Proyectos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/nosotros']">Nosotros</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/contacto']"><i class="fas fa-envelope ml-3"></i> Contacto</a>
+            </li>
+            <li><i class="fab fa-facebook ml-5 mt-3"></i></li>
+        </ul>
+        <!--Inicio opciones del administrador-->
+        <ul *ngIf="identity" class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Ingeníera Angélica
+                </a>
+                <div [ngStyle]="{'background': cambios.colornav}" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/administrador']">Adminastrador</a>
+                    <a class="dropdown-item" [routerLink]="['/registro-contactos']">Contactos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/logout/1']">Cerrar sesión</a>
+                </div>
+            </li>
+        </ul>
+        <!--Fin opciones del administrador-->
+    </div>
+</nav>
+<!--/.Navbar-->

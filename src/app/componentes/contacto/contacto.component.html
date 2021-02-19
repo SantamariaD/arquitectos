@@ -1,0 +1,66 @@
+<!--INICIO PAGINA DE CONTACTO-->
+<div class="contenedor-contactos">
+    <video autoplay muted loop>
+        <source src="../../../assets/videos/video1.mp4" type="video/mp4">
+    </video>
+
+    <!--INICIO FORMULARIO DE CONTACTO-->
+    <form class="form-contacto" #contactoForm="ngForm" (ngSubmit)="enviarContacto(contactoForm)">
+        <h2 class="text-center mb-2">CONTACTO</h2>
+
+        <div class="form-row">
+            <!--NOMBRE-->
+            <div class="form-group">
+                <input [class.is-invalid]="nombre.touched && !nombre.valid" class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre" #nombre="ngModel" [(ngModel)]="contacto.nombre" required>
+                <!--MENSAJE DE ERROR EN NOMBRE-->
+                <div *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback">
+                    Por favor ingrese un nombre.
+                </div>
+            </div>
+
+            <!--TELEFONO-->
+            <div class="form-group">
+                <input [class.is-invalid]="telefono.touched && !telefono.valid" class="form-control" type="number" id="telefono" name="telefono" placeholder="Telefóno" #telefono="ngModel" [(ngModel)]="contacto.telefono" required>
+                <!--MENSAJE DE ERROR EN TELEFONO-->
+                <div *ngIf="!telefono.valid && telefono.touched" class="invalid-feedback">
+                    Por favor ingrese un telefono.
+                </div>
+            </div>
+
+            <!--EMAIL-->
+            <div class="form-group">
+                <input [class.is-invalid]="email.touched && !email.valid" class="form-control" type="email" id="email" name="email" placeholder="Email" #email="ngModel" [(ngModel)]="contacto.email" required>
+                <!--MENSAJE DE ERROR EN EMAIL-->
+                <div *ngIf="!email.valid && email.touched" class="invalid-feedback">
+                    Por favor ingrese un email.
+                </div>
+            </div>
+
+            <!--MENSAJE-->
+            <div class="form-group">
+                <textarea [class.is-invalid]="mensaje.touched && !mensaje.valid" class="form-control" type="textarea" id="mensaje" name="mensaje" #mensaje="ngModel" [(ngModel)]="contacto.mensaje" placeholder="Escriba un mensaje" required cols="30" rows="4"></textarea>
+                <!--MENSAJE DE ERROR EN MENSAJE-->
+                <div *ngIf="!mensaje.valid && mensaje.touched" class="invalid-feedback">
+                    Por favor ingrese un mensaje.
+                </div>
+            </div>
+
+            <!--BOTÓN-->
+            <div class="boton"><button type="submit" class="btn btn-dark" [disabled]="contactoForm.invalid">ENVIAR</button></div>
+
+            <!--INICIO MENSAJE DE ALERTA CORRECTO/ERROR EN FORMULARIO CONTACTO-->
+            <div class="form-group">
+                <div *ngIf="status === 'correcto'" class="mensaje-correcto">
+                    Gracias, Nos pondremos en contacto con usted.
+                </div>
+                <div *ngIf="status === 'error'" class="mensaje-incorrecto">
+                    Los datos ingresados no son correctos. Por favor verifiquelos.
+                </div>
+            </div>
+            <!--INICIO MENSAJE DE ALERTA CORRECTO/ERROR EN FORMULARIO CONTACTO-->
+        </div>
+    </form>
+    <!--INICIO FORMULARIO DE CONTACTO-->
+
+</div>
+<!--FIN PAGINA DE CONTACTO-->

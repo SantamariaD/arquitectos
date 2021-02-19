@@ -1,0 +1,35 @@
+<!--INICIO PARALLAX-->
+<div class="contenedor-infonosotros">
+    <div class="presentacion parallax">
+        <div class="texto-principios ">
+            <h3 class="titulo-principios">Nuestros servicios para ti</h3>
+        </div>
+    </div>
+</div>
+<!--FIN PARALLAX-->
+<div *ngFor="let servicio of servicios" class="contenedor-servicios">
+    <div *ngIf="servicio.id%2==0" class="servicio">
+        <div class="img-servicio">
+            <img src="{{url + 'traer-imagen/'+servicio.imagen}}" alt="">
+        </div>
+        <div class="texto-servicio">
+            <h3 class="titulo text-center mt-2 mr-4"><i *ngIf="identity" class="fas fa-trash-alt basura" (click)="mostrarAlerta(servicio.id)"></i> {{servicio.nombre}} </h3>
+            <p class="text-justify">
+                {{servicio.descripcion}}
+            </p>
+
+        </div>
+    </div>
+    <div *ngIf="servicio.id%2!=0" class="servicio">
+        <div class="texto-servicio">
+            <h3 class="titulo text-center mt-2 mr-4"><i *ngIf="identity" class="fas fa-trash-alt basura" (click)="mostrarAlerta(servicio.id)"></i> {{servicio.nombre}} </h3>
+            <p class="text-justify">
+                {{servicio.descripcion}}
+            </p>
+
+        </div>
+        <div class="img-servicio">
+            <img src="{{url + 'traer-imagen/'+servicio.imagen}}" alt="">
+        </div>
+    </div>
+</div>

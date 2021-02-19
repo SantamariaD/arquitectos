@@ -1,0 +1,33 @@
+<form class="formulario-login" #loginForm="ngForm" (ngSubmit)="enviarlogin(loginForm)">
+    <h2 class="text-center">!BIENVENIDO!</h2>
+    <br>
+    <h5 class="text-center">Por favor ingresa tus datos de acceso</h5>
+    <div class="form-group">
+        <div class="campo-form">
+            <div [class.borde-rojo]="!usuario.valid && usuario.touched" class="contenedor-icono">
+                <i [class.icono-rojo]="!usuario.valid && usuario.touched" class="fas fa-user"></i>
+            </div>
+            <input [class.is-invalid]="usuario.touched && !usuario.valid" type="text" class="form-control" placeholder="Usuario" name="usuario" #usuario="ngModel" [(ngModel)]="login.username" required>
+        </div>
+        <div *ngIf="!usuario.valid && usuario.touched" style="color: #F93154">
+            Por favor ingrese un usuario.
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="campo-form">
+            <div [class.borde-rojo]="!contrasena.valid && contrasena.touched" class="contenedor-icono">
+                <i [class.icono-rojo]="!contrasena.valid && contrasena.touched" class="fas fa-lock"></i>
+            </div>
+            <input [class.is-invalid]="contrasena.touched && !contrasena.valid" type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="contrasena" #contrasena="ngModel" [(ngModel)]="login.contrasena" required>
+        </div>
+        <div *ngIf="!contrasena.valid && contrasena.touched" style="color: #F93154">
+            Por favor ingrese una contraseña.
+        </div>
+    </div>
+    <button (click)="spin()" type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">ENVIAR</button>
+</form>
+
+<!--Spinner-->
+<div class="spinner" *ngIf="girar == true">
+    <ngx-spinner></ngx-spinner>
+</div>

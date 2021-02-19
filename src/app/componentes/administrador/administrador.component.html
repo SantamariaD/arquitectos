@@ -1,0 +1,263 @@
+<div class="contenedor-administrador">
+    <h2 class="text-center">Panel de administracíon</h2>
+    <div class="contenedor-cambios">
+        <!--INICIO BOTONES DE SELECCION-->
+        <div class="btn-cambios mb-5 mt-5">
+            <button (click)="agregarSercio()" type="button" class="btn btn-primary">Agregar servicio</button>
+            <button (click)="agregarProyecto()" type="button" class="btn btn-success ml-5">Agregar proyecto</button>
+            <button (click)="ajustesGenerales()" type="button" class="btn btn-danger ml-5">Ajustes generales</button>
+        </div>
+        <!--FIN BOTONES DE SELECCION-->
+
+        <!--INICIO AGREGAR SERVICIO NUEVO-->
+        <div *ngIf="seleccion == 'servicio'" class="contenedor-servicios">
+            <form #formServicio="ngForm" (ngSubmit)="nuevoServicio(formServicio)">
+                <h2 class="text-center mt-3 mb-4">Agregar un nuevo servicio</h2>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input [class.is-invalid]="nombre.touched && !nombre.valid" type="text" class="form-control" type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="serv.nombre" required />
+                            <label class="form-label" for="nombre">Nombre del servicio nuevo</label>
+                            <!--MENSAJE DE ERROR EN MENSAJE-->
+                            <div *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback">
+                                Por favor ingrese un nombre para el servicio.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <textarea [class.is-invalid]="descripcion.touched && !descripcion.valid" class="form-control" id="descripcion" rows="3" name="descripcion" #descripcion="ngModel" [(ngModel)]="serv.descripcion" required></textarea>
+                            <label class="form-label" for="form3Example2">Descripción del servicio</label>
+                            <!--MENSAJE DE ERROR EN MENSAJE-->
+                            <div *ngIf="!descripcion.valid && descripcion.touched" class="invalid-feedback">
+                                Por favor ingrese un nombre para el servicio.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="subir-imagenserv">
+                        <angular-file-uploader [config]="afuConfig" (ApiResponse)="subirImagen($event)">
+                        </angular-file-uploader>
+                        <label class="form-label mt-3 ml-3" for="form3Example2">Seleccione una imagen</label>
+                    </div>
+
+                </div>
+
+                <!--Alerta de envio de servicio nuevo-->
+                <div *ngIf="status == 'correcto'" class="alert alert-info" role="alert">
+                    El servicio se guardo correctamente!
+                </div>
+                <div *ngIf="status == 'error'" class="alert alert-danger" role="alert">
+                    Hubo un error y no se guardo el servicio!
+                </div>
+
+                <!-- Botón de enviar -->
+                <button [disabled]="formServicio.invalid" type="submit" class="btn btn-primary btn-block mb-4">Crear
+                    Nuevo Servicio</button>
+            </form>
+        </div>
+        <!--FIN AGREGAR SERVICIO NUEVO-->
+
+
+        <!--INICIO AJUSTES GENERALES-->
+        <div *ngIf="seleccion == 'generales'" class="contenedor-generales">
+            <form #formCambios="ngForm" (ngSubmit)="cambiosGeneraleas(formCambios)">
+                <h2 class="text-center mt-3 mb-4">Ajustes generales de la página</h2>
+                <!--INICIO IMAGENES DEL CARRUSEL-->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" type="text" id="textimg1" name="textimg1" #textimg1="ngModel" [(ngModel)]="cambios.textimg1" required />
+                            <label class="form-label" for="textimg1">Agregue el texto y la imagen 1</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="subir-imagen">
+                            <div class="cont-boton">
+                                <angular-file-uploader [config]="afuConfig" (ApiResponse)="imgcarr1($event)">
+                                </angular-file-uploader>
+                            </div>
+                            <div class="img-guardada">
+                                <img src="{{url+'traer-imagen/'+cambios.imgcarr1}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" type="text" id="textimg2" name="textimg2" #textimg2="ngModel" [(ngModel)]="cambios.textimg2" required />
+                            <label class="form-label" for="textimg2">Agregue el texto y la imagen 2</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="subir-imagen">
+                            <div class="cont-boton">
+                                <angular-file-uploader [config]="afuConfig" (ApiResponse)="imgcarr2($event)">
+                                </angular-file-uploader>
+                            </div>
+                            <div class="img-guardada">
+                                <img src="{{url+'traer-imagen/'+cambios.imgcarr2}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" type="text" id="textimg3" name="textimg3" #textimg3="ngModel" [(ngModel)]="cambios.textimg3" required />
+                            <label class="form-label" for="textimg3">Agregue el texto y la imagen 3</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="subir-imagen">
+                            <div class="cont-boton">
+                                <angular-file-uploader [config]="afuConfig" (ApiResponse)="imgcarr3($event)">
+                                </angular-file-uploader>
+                            </div>
+                            <div class="img-guardada">
+                                <img src="{{url+'traer-imagen/'+cambios.imgcarr3}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--FIN IMAGENES DEL CARRUSEL-->
+
+                <!--INICIO CAMBIOS EN TEXTO-->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <textarea rows="3" type="text" class="form-control" type="text" id="text1" name="text1" #text1="ngModel" [(ngModel)]="cambios.text1" required></textarea>
+                            <label class="form-label" for="text1">Agregue el texto 1</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <textarea rows="3" type="text" class="form-control" type="text" id="text2" name="text2" #text2="ngModel" [(ngModel)]="cambios.text2" required></textarea>
+                            <label class="form-label" for="text2">Agregue el texto 2</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <textarea rows="3" type="text" class="form-control" type="text" id="text3" name="text3" #text3="ngModel" [(ngModel)]="cambios.text3" required></textarea>
+                            <label class="form-label" for="text3">Agregue el texto 3</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <textarea rows="3" type="text" class="form-control" type="text" id="text4" name="text4" #text4="ngModel" [(ngModel)]="cambios.text4" required></textarea>
+                            <label class="form-label" for="text4">Agregue el texto 4</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <textarea rows="3" type="text" class="form-control" type="text" id="text5" name="text5" #text5="ngModel" [(ngModel)]="cambios.text5" required></textarea>
+                            <label class="form-label" for="text5">Agregue el texto 5</label>
+                        </div>
+                    </div>
+                </div>
+                <!--INICIO CAMBIOS EN TEXTO-->
+
+                <!--INICIO CAMBIOS DE COLORES-->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="color" class="form-control" id="colornav" name="colornav" #colornav="ngModel" [(ngModel)]="cambios.colornav" required />
+                            <label class="form-label" for="colornav">Agregue el color de la barra de navegación</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="color" class="form-control" id="colorfoo" name="colorfoo" #colorfoo="ngModel" [(ngModel)]="cambios.colorfoo" required />
+                            <label class="form-label" for="colorfoo">Agregue el color del pie de página</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="color" class="form-control" id="colortext" name="colortext" #colortext="ngModel" [(ngModel)]="cambios.colortext" required />
+                            <label class="form-label" for="colortext">Agregue el color del texto</label>
+                        </div>
+                    </div>
+                </div>
+                <!--FIN CAMBIOS DE COLORES-->
+
+                <!-- Botón de enviar -->
+                <button [disabled]="formCambios.invalid" type="submit" class="btn btn-primary btn-block mb-4">Realizar Cambios</button>
+            </form>
+            <!--INICIO MENSAJE DE ALERTA CORRECTO/ERROR EN FORMULARIO CONTACTO-->
+            <div class="form-group">
+                <div *ngIf="status == 'correcto'" class="alert alert-primary" role="alert">
+                    Los datos se actualizaron correctamente.
+                </div>
+                <div *ngIf="status == 'error'" class="alert alert-danger" role="alert">
+                    Hubo un error.
+                </div>
+            </div>
+            <!--INICIO MENSAJE DE ALERTA CORRECTO/ERROR EN FORMULARIO CONTACTO-->
+        </div>
+        <!--FIN AJUSTES GENERALES-->
+
+        <!--INICIO AGREGAR PROYECTO NUEVO-->
+        <div *ngIf="seleccion == 'proyecto'" class="contenedor-servicios">
+            <form #formProyecto="ngForm" (ngSubmit)="nuevoProyecto(formProyecto)">
+                <h2 class="text-center mt-3 mb-4">Agregar un nuevo proyecto</h2>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input [class.is-invalid]="nombre.touched && !nombre.valid" type="text" class="form-control" type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="proyecto.nombre" required />
+                            <label class="form-label" for="nombre">Nombre del proyecto nuevo</label>
+                            <!--MENSAJE DE ERROR EN MENSAJE-->
+                            <div *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback">
+                                Por favor ingrese un nombre para el proyecto.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <textarea [class.is-invalid]="descripcion.touched && !descripcion.valid" class="form-control" id="descripcion" rows="3" name="descripcion" #descripcion="ngModel" [(ngModel)]="proyecto.descripcion" required></textarea>
+                            <label class="form-label" for="form3Example2">Descripción del proyecto</label>
+                            <!--MENSAJE DE ERROR EN MENSAJE-->
+                            <div *ngIf="!descripcion.valid && descripcion.touched" class="invalid-feedback">
+                                Por favor ingrese un nombre para el proyecto.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="subir-imagenserv">
+                        <angular-file-uploader [config]="afuConfig" (ApiResponse)="subirImagenp($event)">
+                        </angular-file-uploader>
+                        <label class="form-label mt-3 ml-3" for="form3Example2">Seleccione una imagen</label>
+                    </div>
+
+                </div>
+
+                <!--Alerta de envio de servicio nuevo-->
+                <div *ngIf="status == 'correcto'" class="alert alert-info" role="alert">
+                    El proyecto se guardo correctamente!
+                </div>
+                <div *ngIf="status == 'error'" class="alert alert-danger" role="alert">
+                    Hubo un error y no se guardo el proyecto!
+                </div>
+
+                <!-- Botón de enviar -->
+                <button [disabled]="formProyecto.invalid" type="submit" class="btn btn-primary btn-block mb-4">Crear
+                    Nuevo Proyecto</button>
+            </form>
+        </div>
+        <!--FIN AGREGAR PROYECTO NUEVO-->
+    </div>
+</div>

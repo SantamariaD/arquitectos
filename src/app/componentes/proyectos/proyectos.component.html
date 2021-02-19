@@ -1,0 +1,35 @@
+<!--INICIO PARALLAX-->
+<div class="contenedor-infonosotros">
+    <div class="presentacion parallax">
+        <div class="texto-principios ">
+            <h3 class="titulo-principios">Nuestros Proyectos Realizados</h3>
+        </div>
+    </div>
+</div>
+<!--FIN PARALLAX-->
+<div *ngFor="let proyecto of proyectos" class="contenedor-proyectos">
+    <div *ngIf="proyecto.id%2==0" class="proyecto">
+        <div class="img-proyecto">
+            <img src="{{url + 'traer-imagen/'+proyecto.imagen}}" alt="nada">
+        </div>
+        <div class="texto-proyecto">
+            <h3 class="titulo text-center mt-2 mr-4"><i *ngIf="identity" class="fas fa-trash-alt basura" (click)="mostrarAlerta(proyecto.id)"></i> {{proyecto.nombre}} </h3>
+            <p class="text-justify">
+                {{proyecto.descripcion}}
+            </p>
+
+        </div>
+    </div>
+    <div *ngIf="proyecto.id%2!=0" class="proyecto">
+        <div class="texto-proyecto">
+            <h3 class="titulo text-center mt-2 mr-4"><i *ngIf="identity" class="fas fa-trash-alt basura" (click)="mostrarAlerta(proyecto.id)"></i> {{proyecto.nombre}} </h3>
+            <p class="text-justify">
+                {{proyecto.descripcion}}
+            </p>
+
+        </div>
+        <div class="img-proyecto">
+            <img src="{{url + 'traer-imagen/'+proyecto.imagen}}" alt="">
+        </div>
+    </div>
+</div>
